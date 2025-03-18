@@ -51,17 +51,17 @@ if (!empty($_SESSION['admin'])) {
     }
 
     if (!empty($_GET['barang'])) {
-        $id = htmlentities($_POST['id']);
-        $kategori = htmlentities($_POST['kategori']);
-        $nama = htmlentities($_POST['nama']);
-        $merk = htmlentities($_POST['merk']);
-        $beli = htmlentities($_POST['beli']);
-        $jual = htmlentities($_POST['jual']);
-        $diskon = htmlentities($_POST['diskon']);
-        $final = htmlentities($_POST['final']);
-        $satuan = htmlentities($_POST['satuan']);
-        $stok = htmlentities($_POST['stok']);
-        $tgl = htmlentities($_POST['tgl']);
+        $id = $_POST['id'];
+        $kategori = $_POST['kategori'];
+        $nama = $_POST['nama'];
+        $merk = $_POST['merk'];
+        $beli = $_POST['beli'];
+        $jual = $_POST['jual'];
+        $diskon = $_POST['diskon'];
+        $final = $_POST['final'];
+        $satuan = $_POST['satuan'];
+        $stok = $_POST['stok'];
+        $tgl = $_POST['tgl'];
 
         $data[] = $kategori;
         $data[] = $nama;
@@ -76,10 +76,18 @@ if (!empty($_SESSION['admin'])) {
         $data[] = $id;
         $sql = 'UPDATE barang SET id_kategori=?, nama_barang=?, merk=?, 
 				harga_beli=?, harga_jual=?, diskon=?, harga_final=?, satuan_barang=?, stok=?, tgl_update=?  WHERE id_barang=?';
-        $row = $config -> prepare($sql);
-        $row -> execute($data);
-        echo '<script>window.location="../../index.php?page=barang/edit&barang='.$id.'&success=edit-data"</script>';
-    }
+        $row = $config->prepare($sql);
+        $success = $row->execute($data);
+            if ($success) {
+                echo '<script>window.location="../../index.php?page=barang/edit&barang=' . $id . '&success=edit-data"</script>';
+                exit();
+            } else {
+                echo "Terjadi kesalahan saat mengupdate data.";
+            }
+        } else {
+            echo "Harap isi semua kolom yang diperlukan.";
+        }
+
 
     if (!empty($_GET['gambar'])) {
         $id = htmlentities($_POST['id']);
@@ -215,6 +223,7 @@ if (!empty($_SESSION['admin'])) {
 			<tr>
 				<th>ID Barang</th>
 				<th>Nama Barang</th>
+				<th>Harga Jual</th>
 				<th>Merk</th>
 				<th>Final Price</th>
 				<th>Aksi</th>

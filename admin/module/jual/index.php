@@ -68,6 +68,7 @@
 								<tr>
 									<td> No</td>
 									<td> Nama Barang</td>
+									<td> Harga Jual</td>
 									<td style="width:10%;"> Jumlah</td>
 									<td style="width:10%;"> Diskon</td>
 									<td style="width:20%;"> Total</td>
@@ -81,6 +82,7 @@
 								<tr>
 									<td><?php echo $no;?></td>
 									<td><?php echo $isi['nama_barang'];?></td>
+									<td><?php echo $isi['harga_jual'];?></td>
 									<td>
 										<!-- aksi ke table penjualan -->
 										<form method="POST" action="fungsi/edit/edit.php?jual=jual">

@@ -17,18 +17,18 @@
         <?php } ?>
 
         <?php
-        $sql = " select * from barang where stok <= 3";
-        $row = $config->prepare($sql);
-        $row->execute();
-        $r = $row->rowCount();
-        if ($r > 0) {
-            echo "
-				<div class='alert alert-warning'>
-					<span class='glyphicon glyphicon-info-sign'></span> Ada <span style='color:red'>$r</span> barang yang Stok tersisa sudah kurang dari 3 items. silahkan pesan lagi !!
-					<span class='pull-right'><a href='index.php?page=barang&stok=yes'>Cek Barang <i class='fa fa-angle-double-right'></i></a></span>
-				</div>
-				";
-        }
+        // $sql = " select * from barang where stok <= 3";
+        // $row = $config->prepare($sql);
+        // $row->execute();
+        // $r = $row->rowCount();
+        // if ($r > 0) {
+        //     echo "
+		// 		<div class='alert alert-warning'>
+		// 			<span class='glyphicon glyphicon-info-sign'></span> Ada <span style='color:red'>$r</span> barang yang Stok tersisa sudah kurang dari 3 items. silahkan pesan lagi !!
+		// 			<span class='pull-right'><a href='index.php?page=barang&stok=yes'>Cek Barang <i class='fa fa-angle-double-right'></i></a></span>
+		// 		</div>
+		// 		";
+        // }
         ?>
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-primary btn-md mr-2" data-toggle="modal" data-target="#myModal">
